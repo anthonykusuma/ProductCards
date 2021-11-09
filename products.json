@@ -1,0 +1,14 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Product ABC",
+            "price": 200,
+            "discount": 0,
+            "imgUrl":"https://www.hahaha.com/hehe.jpg" 
+        },
+        {
+
+        }
+    ]
+}

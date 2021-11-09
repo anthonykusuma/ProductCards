@@ -1,0 +1,274 @@
+body {
+  background: #fff;
+  font-family: "DM Mono", monospace;
+  font-weight: 400;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 95vw;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin: 2em auto;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 0;
+}
+.grid .grid-item {
+  padding: 2em 0.5em;
+  position: relative;
+}
+
+.product-card {
+  position: relative;
+}
+
+.product-image {
+  max-width: 100%;
+  border-radius: 4px;
+  position: relative;
+}
+.product-image .image-wrapper {
+  position: relative;
+}
+.product-image .image-wrapper img {
+  width: 100%;
+  min-height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.product-image .image-wrapper .image-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+.product-image .image-wrapper .image-hover:hover {
+  opacity: 1;
+}
+
+.product-badge {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  text-transform: uppercase;
+  padding: 0.3em 0.5em;
+  border-radius: 4px;
+  display: inline-block;
+  z-index: 5;
+  color: #fff;
+  font-weight: 400;
+  font-family: "DM Sans", sans-serif;
+}
+.product-badge.sale {
+  background: #FF6F60;
+}
+.product-badge.new {
+  background: #6F60FF;
+}
+
+.add-wishlist {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  border: none;
+  background: none;
+  z-index: 5;
+}
+.add-wishlist .heart {
+  display: block;
+  background: url(https://cdn.anthonykusuma.com/img/theworkingparty/heart.svg) no-repeat center;
+  background-size: contain;
+  width: 2rem;
+  height: 2rem;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+.add-wishlist.added .heart {
+  display: block;
+  background: url(https://cdn.anthonykusuma.com/img/theworkingparty/heart-red.svg) no-repeat center;
+  background-size: contain;
+  width: 2rem;
+  height: 2rem;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.quickbuy-container {
+  position: absolute;
+  bottom: 0;
+  left: 1em;
+  right: 1em;
+  z-index: 3;
+  padding-bottom: 1em;
+}
+.quickbuy-container .main-btn {
+  width: 100%;
+  background: #fff;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-family: "DM Mono", monospace;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.quickbuy-container .main-btn.disabled {
+  cursor: not-allowed;
+  color: #8D96A7;
+}
+.quickbuy-container .size-selection {
+  display: none;
+  transition: all 0.25s ease-in-out;
+}
+.quickbuy-container .size-list {
+  background: #fff;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.quickbuy-container .size-list button {
+  box-sizing: border-box;
+  font-family: "DM Mono", monospace;
+  background: #fff;
+  border-radius: 2px;
+  color: #2C3547;
+  border: 1px solid #8D96A7;
+  cursor: pointer;
+  margin: 0.25rem 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  min-width: 3rem;
+  font-size: 1rem;
+  display: inline-block;
+}
+.quickbuy-container .size-list button.selected {
+  background: #2C3547;
+  color: #F8F8F8;
+  border-color: #2C3547;
+}
+.quickbuy-container .size-list button.oos {
+  text-decoration: line-through;
+  color: #8D96A7;
+}
+
+.product-info {
+  background: #fff;
+}
+.product-info a {
+  text-decoration: none;
+  color: #8D96A7;
+}
+.product-info a h4 {
+  font-weight: 400;
+  display: inline-block;
+  font-family: "DM Sans", sans-serif;
+}
+.product-info a h4 span {
+  color: #2C3547;
+  display: block;
+  text-transform: uppercase;
+  font-family: "DM Mono", monospace;
+}
+
+.product-price {
+  color: #2C3547;
+}
+.product-price .sale {
+  color: #FF6F60;
+  margin-right: 0.2em;
+}
+.product-price .sale-before {
+  color: #8D96A7;
+  text-decoration: line-through;
+}
+
+.snackbar {
+  visibility: hidden;
+  min-width: 200px;
+  margin-left: -100px;
+  background-color: #2C3547;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 1em;
+  position: fixed;
+  z-index: 99;
+  left: 50%;
+  bottom: 30px;
+}
+.snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
+  animation: fadein 0.5s, fadeout 0.5s 1.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .grid {
+    flex-shrink: 0;
+    flex-direction: row;
+  }
+  .grid .grid-item {
+    flex-basis: 50%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .grid .grid-item {
+    flex-basis: 25%;
+  }
+
+  .quickbuy-container .size-list button {
+    font-size: 0.9rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
